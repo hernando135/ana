@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TenshiCall - Perfil del Freelance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            padding: 20px;
+        }
+        .header {
+            background-color: #FFA500;
+            color: black;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: bold;
+        }
+        .header p {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        .profile-card {
+            background: white;
+            color: black;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 750px;
+            margin: auto;
+        }
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .calendar {
+            margin-top: 20px;
+        }
+        .availability {
+            list-style: none;
+            padding: 0;
+        }
+        .availability li {
+            padding: 8px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .availability li:hover {
+            background-color: #f0f0f0;
+        }
+        .btn-custom {
+            background-color: #FFC107;
+            color: black;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .btn-custom:hover {
+            background-color: #e0a800;
+        }
+        .form-section {
+            margin-top: 20px;
+        }
+        .country-select {
+            display: flex;
+            align-items: center;
+        }
+        .country-select img {
+            width: 20px;
+            height: 15px;
+            margin-right: 10px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .freelancer-profile {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <meta name="description" content="Reserva tu cita con TenshiCall. Conectamos almas solitarias con expertos acompañantes. Descubre horarios disponibles y realiza tu pago seguro en minutos.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="header">
+        <h1>Reserva tu cita ahora con TenshiCall</h1>
+        <p>Conectando almas</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- Perfil del Freelancer -->
+            <div class="col-md-6">
+                <div class="profile-card">
+                    <div class="text-center">
+                        <img src="hernando.jpg" alt="Foto del Freelancer" class="profile-photo">
+                        <h2 id="freelancer-name">Freelancer</h2>
+                        <p class="text-muted" id="availability-status">Disponible</p>
+                        <p class="text-danger" id="discount-rate">Antes: $5.00/min</p>
+                        <p class="text-success" id="rate">Ahora: $1.7/min</p>
+                    </div>
+                    <div class="freelancer-profile">
+                        <p><strong>Juan</strong> es un psíquico clarividente y clariaudiente que ofrece lecturas directas y sinceras, adaptadas a tus necesidades. Su especialidad es usar metáforas: imágenes visuales que reflejan tu situación actual o recursos internos que aún no has descubierto.</p>
+                        <p>¿Necesitas cerrar un ciclo emocional con un ser querido distante o fallecido? <strong>Juan</strong> te ayuda a encontrar la paz que buscas. Además, responde tus preguntas sobre amor, carrera y finanzas con claridad y empatía.</p>
+                        <p>Con más de 10 años de experiencia, <strong>Juan</strong> es un excelente oyente y brinda consejos prácticos y fáciles de recordar. Cuando se trata de momentos difíciles, <strong>Juan</strong> te mostrará cómo cada crisis puede esconder una gran oportunidad.</p>
+                        <p>¿Listo para descubrir lo que te depara el futuro? ¡Conéctate con <strong>Juan</strong> y déjate guiar!</p>
+                    </div>
+                    <hr>
+                    <h4 class="section-title">Selecciona tu plan</h4>
+                    <select class="form-select mb-3" id="package-select">
+                        <option value="1.7">Pago por minuto - $1.7 USD/min</option>
+                        <option value="34">20 minutos por $34 USD (Ahorra $52 USD)</option>
+                        <option value="50">60 minutos por $50 USD</option>
+                    </select>
+                    <hr>
+                    <h4 class="section-title">Horarios disponibles</h4>
+                    <div class="calendar">
+                        <input type="date" class="form-control" id="calendar" min="2024-12-28">
+                    </div>
+                    <small class="text-muted">Zona horaria: Miami, Florida</small>
+                    <h5 class="mt-4">Citas Disponibles:</h5>
+                    <ul class="availability" id="appointment-list">
+                        <li>Cargando citas...</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Captura de datos -->
+            <div class="col-md-6">
+                <div class="profile-card">
+                    <h4 class="section-title">Información de contacto</h4>
+                    <form id="contact-form" class="form-section">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Teléfono</label>
+                            <div class="input-group">
+                                <select class="form-select" id="country-code">
+                                    <option value="+1">🇺🇸 +1 (Estados Unidos)</option>
+                                    <option value="+57">🇨🇴 +57 (Colombia)</option>
+                                    <option value="+34">🇪🇸 +34 (España)</option>
+                                    <option value="+52">🇲🇽 +52 (México)</option>
+                                    <option value="+54">🇦🇷 +54 (Argentina)</option>
+                                    <option value="+56">🇨🇱 +56 (Chile)</option>
+                                    <option value="+58">🇻🇪 +58 (Venezuela)</option>
+                                </select>
+                                <input type="tel" class="form-control" id="phone" placeholder="Número de teléfono" pattern="\d{7,15}" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dob" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" id="dob" required>
+                        </div>
+                        <div class="alert alert-danger d-none" id="age-alert" role="alert">
+                            Debes ser mayor de 18 años para agendar una cita.
+                        </div>
+                        <hr>
+                        <h4 class="section-title">Pago</h4>
+                        <button type="submit" class="btn btn-custom w-100" id="payment-button">Iniciar pago</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const apiUrl = "https://script.google.com/macros/s/AKfycbxYCJ7c8htnkL_7yFA0sMIldj4ptayyGw2ssPIF8hZQ1_D7-D2QdU9TT5PV4tXWBEHX/exec";
+
+        async function loadFreelancerData(selectedDate = null) {
+            const appointmentList = document.getElementById('appointment-list');
+            appointmentList.innerHTML = '<li>Cargando citas...</li>';
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.length > 0) {
+                    const freelancer = data[0];
+                    document.getElementById('freelancer-name').textContent = freelancer.NOMBRE;
+                    document.getElementById('availability-status').textContent = freelancer.ESTADO === 'disponible' ? 'Disponible' : 'No Disponible';
+
+                    appointmentList.innerHTML = '';
+
+                    const filteredAppointments = data.filter(item => item.FECHA === selectedDate && item.ESTADO === 'disponible');
+
+                    if (filteredAppointments.length > 0) {
+                        filteredAppointments.sort((a, b) => parseTime(a.HORA) - parseTime(b.HORA));
+                        filteredAppointments.forEach(item => {
+                            const li = document.createElement('li');
+                            li.textContent = `${item.HORA} hrs`;
+                            appointmentList.appendChild(li);
+                        });
+                    } else {
+                        appointmentList.innerHTML = '<li>No hay citas disponibles</li>';
+                    }
+                } else {
+                    console.error("No hay datos disponibles en la API.");
+                }
+            } catch (error) {
+                console.error('Error al cargar los datos:', error);
+                appointmentList.innerHTML = '<li>Error al cargar las citas</li>';
+            }
+        }
+
+        function parseTime(timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            return hours * 60 + minutes;
+        }
+
+        document.getElementById('calendar').addEventListener('change', function () {
+            const selectedDate = this.value;
+            loadFreelancerData(selectedDate);
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const dob = new Date(document.getElementById('dob').value);
+            const age = new Date().getFullYear() - dob.getFullYear();
+            const ageAlert = document.getElementById('age-alert');
+
+            if (age < 18) {
+                ageAlert.classList.remove('d-none');
+                return;
+            }
+
+            ageAlert.classList.add('d-none');
+
+            const selectedPlan = document.getElementById('package-select').value;
+            const paymentUrl = `https://secure.paymentgateway.com/checkout?plan=${selectedPlan}`;
+            window.location.href = paymentUrl;
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('calendar').value = today;
+            loadFreelancerData(today);
+        });
+    </script>
+</body>
+</html>
