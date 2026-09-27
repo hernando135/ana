@@ -21,7 +21,7 @@ export function ClubScreen({ onContinue }: { onContinue: () => void }) {
           </li>
         ))}
       </ul>
-      <div className="prose">
+      <div className="quote">
         {CLUB.text.map((p) => (
           <p key={p}>{p}</p>
         ))}

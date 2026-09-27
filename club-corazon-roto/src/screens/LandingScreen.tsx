@@ -1,5 +1,6 @@
 import { BrandMark } from '../components/BrandMark';
 import { Button } from '../components/Button';
+import { Illustration } from '../components/Illustration';
 import { ScreenTitle } from '../components/Screen';
 import { LANDING } from '../data/copy';
 import { useScreenFocus } from '../hooks/useScreenFocus';
@@ -18,9 +19,12 @@ export function LandingScreen({ onStart }: { onStart: () => void }) {
           <li key={m}>{m}</li>
         ))}
       </ul>
-      <Button onClick={onStart} className="btn--block">
-        {LANDING.cta}
-      </Button>
+      <Illustration variant="landing" />
+      <div className="actions">
+        <Button onClick={onStart} className="btn--block">
+          {LANDING.cta}
+        </Button>
+      </div>
     </section>
   );
 }

@@ -18,9 +18,8 @@ export function AppShell({ screenKey, onBack, progress, showBrand = true, childr
           {onBack ? (
             <button type="button" className="back" onClick={onBack} aria-label="Volver a la pantalla anterior">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M20 12H5m6-7-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span>Atrás</span>
             </button>
           ) : (
             <span className="back-placeholder" />

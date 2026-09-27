@@ -24,7 +24,7 @@ export default function DevPanel({ state, dispatch }: Props) {
   return (
     <div className="devpanel">
       <button type="button" className="devpanel__toggle" onClick={() => setOpen((o) => !o)}>
-        DEV {open ? '×' : `· ${state.screen} · ${state.answers.route ?? liveRoute + '?'}`}
+        {open ? 'DEV ×' : 'DEV'}
       </button>
       {open && (
         <div className="devpanel__body">

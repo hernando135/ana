@@ -29,7 +29,10 @@ export function ProcessingScreen({ onFinalize, onDone }: Props) {
 
   return (
     <section className="processing">
-      <div className="processing__pulse" aria-hidden="true" />
+      <svg className="processing__ring" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+        <circle cx="40" cy="40" r="34" fill="none" stroke="var(--color-nude-soft)" strokeWidth="8" />
+        <circle cx="40" cy="40" r="34" fill="none" stroke="var(--color-wine)" strokeWidth="8" strokeLinecap="round" strokeDasharray="60 154" />
+      </svg>
       <ScreenTitle titleRef={titleRef} className="visually-hidden">
         Preparando tu resultado
       </ScreenTitle>

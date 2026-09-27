@@ -63,6 +63,18 @@ export const CHECKOUT = {
   ],
   cta: 'CONTINUAR AL PAGO',
   pending: 'Integración con ePayco pendiente.',
+  planName: 'Club del Corazón Roto',
+  planPeriod: '30 días · renovación mensual',
+  secure: 'Pago seguro',
+  perDay: 'al día',
+  highlightsTitle: 'Lo que incluye tu plan',
+  // Etiquetas tomadas de los componentes del Club (sin promesas de resultado).
+  highlights: [
+    { step: 'HOY', label: 'Qué hago hoy' },
+    { step: '72 H', label: 'Primeras 72 horas' },
+    { step: '30 DÍAS', label: 'Plan de 30 días' },
+    { step: 'SIEMPRE', label: 'Pasó algo' },
+  ],
 };
 
 export const RESULT_CTA = '¿QUÉ DEBERÍA MIRAR AHORA?';
