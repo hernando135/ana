@@ -5,10 +5,8 @@ import { TRANSITIONS } from './data/transitions';
 import { useQuiz } from './hooks/useQuiz';
 import { getPrevScreen, getProgress, isQuizScreen } from './logic/flow';
 import { clearState } from './storage/persistence';
-import { BridgeScreen } from './screens/BridgeScreen';
 import { CheckoutScreen } from './screens/CheckoutScreen';
 import { ClubScreen } from './screens/ClubScreen';
-import { DeepenScreen } from './screens/DeepenScreen';
 import { LandingScreen } from './screens/LandingScreen';
 import { NameScreen } from './screens/NameScreen';
 import { ProcessingScreen } from './screens/ProcessingScreen';
@@ -44,7 +42,7 @@ export default function App() {
         screenKey={screen}
         onBack={canGoBack ? back : undefined}
         progress={isQuizScreen(screen) ? getProgress(screen, answers) : undefined}
-        showBrand={screen !== 'landing' && screen !== 'club'}
+        showBrand={screen !== 'landing'}
       >
         {content}
       </AppShell>
@@ -98,13 +96,6 @@ export default function App() {
             onContinue={next}
           />
         );
-
-      case 'deepen':
-        if (!answers.route || answers.route === 'R0') return null;
-        return <DeepenScreen route={answers.route} onContinue={next} />;
-
-      case 'bridge':
-        return <BridgeScreen onContinue={next} />;
 
       case 'club':
         return <ClubScreen onContinue={next} />;

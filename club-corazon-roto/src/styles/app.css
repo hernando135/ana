@@ -668,7 +668,20 @@ button {
   color: var(--color-plum);
 }
 
-/* ---------- Profundización ---------- */
+/* ---------- Profundización (dentro del resultado) ---------- */
+.deepen {
+  margin-top: var(--space-7);
+}
+
+.deepen__title {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.25;
+  outline: none;
+  scroll-margin-top: 96px;
+  text-wrap: balance;
+}
+
 .numbered {
   list-style: none;
   padding: 0;
@@ -753,14 +766,24 @@ button {
   font-weight: 400;
 }
 
-/* ---------- Club ---------- */
-.club {
-  align-items: center;
+/* ---------- Club (puente + oferta) ---------- */
+.club__offer {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.club .screen__title {
-  margin-top: var(--space-5);
+.club__title {
+  font-weight: 700;
+  font-size: clamp(24px, 6.6vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--color-wine);
+  text-wrap: balance;
 }
 
 .features {
@@ -812,9 +835,6 @@ button {
   color: var(--color-text-muted);
 }
 
-.club .actions {
-  width: 100%;
-}
 
 /* ---------- Checkout ---------- */
 .plan {

@@ -38,7 +38,7 @@ describe('flujo condicional', () => {
 
   it('R0 no continúa hacia profundización ni Club', () => {
     expect(getFlow({ route: 'R0' }).slice(-2)).toEqual(['processing', 'result']);
-    expect(getFlow({ route: 'R3' }).slice(-4)).toEqual(['deepen', 'bridge', 'club', 'checkout']);
+    expect(getFlow({ route: 'R3' }).slice(-4)).toEqual(['processing', 'result', 'club', 'checkout']);
   });
 
   it('el progreso se calcula sobre las pantallas reales (sin saltadas)', () => {
@@ -115,6 +115,6 @@ describe('reducer', () => {
 
   it('desde el resultado no se puede volver al quiz', () => {
     expect(getPrevScreen('result', { route: 'R2' })).toBeNull();
-    expect(getPrevScreen('deepen', { route: 'R2' })).toBe('result');
+    expect(getPrevScreen('club', { route: 'R2' })).toBe('result');
   });
 });

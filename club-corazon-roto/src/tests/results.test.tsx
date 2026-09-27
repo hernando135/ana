@@ -1,7 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { DEEPEN, GOAL_PERSONALIZATION, getResultContent, type NormalRouteId } from '../data/results';
-import { DeepenScreen } from '../screens/DeepenScreen';
 import { ResultScreen } from '../screens/ResultScreen';
 import type { GoalNow } from '../types/quiz';
 
@@ -41,10 +40,20 @@ describe('pantallas de resultado', () => {
     },
   );
 
-  it('la profundización muestra 3 puntos numerados', () => {
-    render(<DeepenScreen route="R4" onContinue={noop} />);
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Antes de volver otra vez, mira estas 3 cosas');
-    expect(screen.getAllByRole('listitem')).toHaveLength(3);
+  it.each(ROUTES)('%s muestra sus 3 puntos en la misma pantalla del resultado', (route) => {
+    render(<ResultScreen route={route} timing="LONG" firstName="Ana" goal="wasting_time" onContinue={noop} />);
+    expect(screen.getByRole('heading', { level: 2, name: DEEPEN[route].title })).toBeInTheDocument();
+    for (const item of DEEPEN[route].items) expect(screen.getByText(item)).toBeInTheDocument();
+  });
+
+  it('el CTA primero lleva a los 3 puntos y después avanza', () => {
+    let advanced = 0;
+    render(<ResultScreen route="R4" timing="LONG" firstName="Ana" onContinue={() => advanced++} />);
+    fireEvent.click(screen.getByRole('button', { name: '¿QUÉ DEBERÍA MIRAR AHORA?' }));
+    expect(advanced).toBe(0);
+    expect(screen.getByRole('heading', { level: 2, name: DEEPEN.R4.title })).toHaveFocus();
+    fireEvent.click(screen.getByRole('button', { name: 'SEGUIR' }));
+    expect(advanced).toBe(1);
   });
 
   it('ningún texto afirma lo que siente él o probabilidades', () => {

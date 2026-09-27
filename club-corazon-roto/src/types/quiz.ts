@@ -185,8 +185,6 @@ export type ScreenId =
   | TransitionScreenId
   | 'processing'
   | 'result'
-  | 'deepen'
-  | 'bridge'
   | 'club'
   | 'checkout';
 

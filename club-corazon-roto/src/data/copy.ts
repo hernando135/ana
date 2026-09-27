@@ -78,3 +78,6 @@ export const CHECKOUT = {
 };
 
 export const RESULT_CTA = '¿QUÉ DEBERÍA MIRAR AHORA?';
+
+/** CTA del resultado una vez que la usuaria ya vio sus 3 puntos. */
+export const RESULT_CONTINUE_CTA = 'SEGUIR';

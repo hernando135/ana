@@ -37,10 +37,19 @@ describe('persistencia en localStorage', () => {
   it('una pantalla de resultado sin ruta se recalcula al rehidratar', () => {
     const base = createInitialState();
     const answers = { ...base.answers, ...ROUTE_PRESETS.R4 };
-    saveState({ ...base, answers, screen: 'deepen' });
+    saveState({ ...base, answers, screen: 'club' });
     const loaded = loadState();
-    expect(loaded?.screen).toBe('deepen');
+    expect(loaded?.screen).toBe('club');
     expect(loaded?.answers.route).toBe('R4');
+  });
+
+  it('una pantalla guardada de una versión anterior (deepen/bridge) vuelve al resultado', () => {
+    const base = createInitialState();
+    const answers = finalizeAnswers({ ...base.answers, ...ROUTE_PRESETS.R2 });
+    for (const legacy of ['deepen', 'bridge']) {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...base, answers, screen: legacy }));
+      expect(loadState()?.screen).toBe('result');
+    }
   });
 
   it('una pantalla que ya no existe en el flujo se corrige', () => {

@@ -62,13 +62,12 @@ describe('App — recorrido completo', () => {
     expect(screen.queryByText(/se acabó definitivamente/i)).not.toBeInTheDocument();
     expect(loadState()?.answers.route).toBe('R5');
 
+    expect(screen.getByRole('heading', { level: 2, name: 'Ahora mismo hay 3 cosas que necesitas mirar' })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: '¿QUÉ DEBERÍA MIRAR AHORA?' }));
-    await heading('Ahora mismo hay 3 cosas que necesitas mirar');
     await user.click(screen.getByRole('button', { name: 'SEGUIR' }));
     await heading('Tu resultado es una foto de lo que está pasando hoy.');
     expect(screen.getByText('Descubres que hay otra persona.')).toBeInTheDocument();
-    await user.click(screen.getByRole('button', { name: 'VER QUÉ INCLUYE' }));
-    await heading('Haz parte del Club del Corazón Roto');
+    expect(screen.getByRole('heading', { level: 2, name: 'Haz parte del Club del Corazón Roto' })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'EMPEZAR MIS 30 DÍAS' }));
     await heading('Tus primeros 30 días en el Club');
     expect(screen.getByTestId('club-price')).toHaveTextContent('Precio por definir');
@@ -101,6 +100,7 @@ describe('App — recorrido completo', () => {
     await heading('Antes de pensar en volver, hay algo más importante.');
     expect(screen.getByText(/busca ayuda de emergencia en tu país/)).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '¿QUÉ DEBERÍA MIRAR AHORA?' })).not.toBeInTheDocument();
+    expect(screen.queryByText('Para eso existe el Club.')).not.toBeInTheDocument();
     expect(loadState()?.answers.route).toBe('R0');
   }, 20000);
 

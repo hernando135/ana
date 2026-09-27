@@ -23,7 +23,8 @@ export function getQuizScreens(a: Partial<QuizAnswers>): ScreenId[] {
 export function getPostQuizScreens(a: Partial<QuizAnswers>): ScreenId[] {
   // R0 (seguridad) nunca se dirige hacia contenido de reconquista ni hacia el Club.
   if (a.route === 'R0') return ['result'];
-  return ['result', 'deepen', 'bridge', 'club', 'checkout'];
+  // Resultado (con sus 3 puntos) → Club (con el puente) → checkout.
+  return ['result', 'club', 'checkout'];
 }
 
 export function getFlow(a: Partial<QuizAnswers>): ScreenId[] {
@@ -38,7 +39,7 @@ export function isQuizScreen(screen: ScreenId): boolean {
   return isQuestionScreen(screen) || screen === 'T1' || screen === 'T2';
 }
 
-export const POST_QUIZ_SCREENS: readonly ScreenId[] = ['result', 'deepen', 'bridge', 'club', 'checkout'];
+export const POST_QUIZ_SCREENS: readonly ScreenId[] = ['result', 'club', 'checkout'];
 
 const FIELD_BY_SCREEN: Partial<Record<QuestionScreenId, keyof QuizAnswers>> = {
   Q1: 'goal_now',
