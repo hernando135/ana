@@ -28,7 +28,7 @@ async function answerUntilContact(user: ReturnType<typeof userEvent.setup>, time
 }
 
 async function finishFromQ11(user: ReturnType<typeof userEvent.setup>, safety: string, name: string) {
-  await heading('¿Qué es lo que más te está jodiendo ahora mismo?');
+  await heading('¿Qué es lo que más te está doliendo ahora mismo?');
   await pick(user, 'Sentir que llevo demasiado tiempo atrapada en esto.');
   await heading(/Si mañana apareciera/);
   await pick(user, 'No sé. Una parte quiere volver y otra sabe que quizá no debería.');

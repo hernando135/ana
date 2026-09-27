@@ -185,7 +185,7 @@ export const SINGLE_CHOICE_QUESTIONS: SingleChoiceQuestion[] = [
     kind: 'single',
     screen: 'Q11',
     field: 'main_pain',
-    title: '¿Qué es lo que más te está jodiendo ahora mismo?',
+    title: '¿Qué es lo que más te está doliendo ahora mismo?',
     options: [
       { id: 'Q11_A', label: 'No saber si va a volver.', value: 'will_he_return' },
       { id: 'Q11_B', label: 'No saber si todavía me quiere.', value: 'does_he_love_me' },
