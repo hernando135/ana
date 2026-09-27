@@ -9,6 +9,7 @@ npm install
 npm run dev      # desarrollo (incluye panel DEV abajo a la derecha)
 npm test         # tests (Vitest)
 npm run build    # build de producción en dist/ (sin panel DEV)
+npm run build:test  # build de prueba en dist-test/ (con panel DEV para ensayar rutas)
 npm run lint
 ```
 

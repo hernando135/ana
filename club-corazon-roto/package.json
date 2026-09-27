@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build:test": "tsc -b && VITE_TEST_PANEL=true vite build --outDir dist-test"
   },
   "dependencies": {
     "react": "^19.2.8",

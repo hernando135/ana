@@ -19,8 +19,10 @@ import { SingleChoiceScreen } from './screens/SingleChoiceScreen';
 import { TransitionScreen } from './screens/TransitionScreen';
 import type { QuizAnswers } from './types/quiz';
 
-// El panel de depuración no se incluye en el build de producción.
-const DevPanel = import.meta.env.DEV ? lazy(() => import('./dev/DevPanel')) : null;
+// El panel de depuración no se incluye en el build de producción,
+// salvo en builds de prueba con VITE_TEST_PANEL=true.
+const SHOW_DEV_PANEL = import.meta.env.DEV || import.meta.env.VITE_TEST_PANEL === 'true';
+const DevPanel = SHOW_DEV_PANEL ? lazy(() => import('./dev/DevPanel')) : null;
 
 export default function App() {
   const { state, dispatch } = useQuiz();
