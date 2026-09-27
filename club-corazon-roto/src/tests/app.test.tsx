@@ -59,6 +59,7 @@ describe('App — recorrido completo', () => {
 
     await heading('Valentina, ahora mismo no hay una reconciliación en marcha.');
     expect(screen.getByText('Lo que necesitas ahora es distinguir esperanza de hechos.')).toBeInTheDocument();
+    expect(screen.getByText(/Como fue él quien terminó/)).toBeInTheDocument();
     expect(screen.queryByText(/se acabó definitivamente/i)).not.toBeInTheDocument();
     expect(loadState()?.answers.route).toBe('R5');
 

@@ -1,4 +1,4 @@
-import type { GoalNow, RouteId, Timing } from '../types/quiz';
+import type { GoalNow, RouteId, Timing, WhoEnded } from '../types/quiz';
 
 export interface ResultBlock {
   label: string;
@@ -162,6 +162,25 @@ export const GOAL_PERSONALIZATION: Record<GoalNow, string> = {
 
 export function getPersonalization(goal?: GoalNow): string | null {
   return goal ? GOAL_PERSONALIZATION[goal] : null;
+}
+
+/**
+ * Línea de contexto según Q2 (quién terminó), solo R1-R5.
+ * Describe el punto de partida sin culpar ni predecir.
+ */
+export const WHO_ENDED_PERSONALIZATION: Record<WhoEnded, string> = {
+  he_ended:
+    'Como fue él quien terminó, es natural que ahora estés pendiente de cada cosa que hace. Por eso este resultado se fija en hechos, no en señales sueltas.',
+  user_ended:
+    'Fuiste tú quien terminó. Eso no te obliga a estar segura de tu decisión, pero sí vale la pena recordar por qué lo hiciste antes de mover algo.',
+  mutual:
+    'Lo decidieron entre los dos, y aun así duele. Que haya sido mutuo no significa que tengas que tenerlo todo resuelto.',
+  unclear:
+    'Nunca quedó claro quién terminó. Cuando el final es confuso, es fácil quedarse esperando una respuesta; por eso aquí miramos lo que sí está pasando.',
+};
+
+export function getWhoEndedLine(whoEnded?: WhoEnded): string | null {
+  return whoEnded ? WHO_ENDED_PERSONALIZATION[whoEnded] : null;
 }
 
 export const SAFETY_RESULT = {

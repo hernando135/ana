@@ -1,8 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { DEEPEN, GOAL_PERSONALIZATION, getResultContent, type NormalRouteId } from '../data/results';
+import {
+  DEEPEN,
+  GOAL_PERSONALIZATION,
+  WHO_ENDED_PERSONALIZATION,
+  getResultContent,
+  type NormalRouteId,
+} from '../data/results';
 import { ResultScreen } from '../screens/ResultScreen';
-import type { GoalNow } from '../types/quiz';
+import type { GoalNow, WhoEnded } from '../types/quiz';
 
 const ROUTES: NormalRouteId[] = ['R1', 'R2', 'R3', 'R4', 'R5'];
 const noop = () => {};
@@ -40,6 +46,15 @@ describe('pantallas de resultado', () => {
     },
   );
 
+  it.each(Object.entries(WHO_ENDED_PERSONALIZATION) as [WhoEnded, string][])(
+    'personalización Q2 %s junto a la de Q1',
+    (whoEnded, text) => {
+      render(<ResultScreen route="R3" timing="LONG" firstName="Ana" goal="wasting_time" whoEnded={whoEnded} onContinue={noop} />);
+      expect(screen.getByText(text)).toBeInTheDocument();
+      expect(screen.getByText(GOAL_PERSONALIZATION.wasting_time)).toBeInTheDocument();
+    },
+  );
+
   it.each(ROUTES)('%s muestra sus 3 puntos en la misma pantalla del resultado', (route) => {
     render(<ResultScreen route={route} timing="LONG" firstName="Ana" goal="wasting_time" onContinue={noop} />);
     expect(screen.getByRole('heading', { level: 2, name: DEEPEN[route].title })).toBeInTheDocument();
@@ -57,7 +72,7 @@ describe('pantallas de resultado', () => {
   });
 
   it('ningún texto afirma lo que siente él o probabilidades', () => {
-    const all = JSON.stringify({ DEEPEN, GOAL_PERSONALIZATION, r: ROUTES.map((r) => getResultContent(r)) });
+    const all = JSON.stringify({ DEEPEN, GOAL_PERSONALIZATION, WHO_ENDED_PERSONALIZATION, r: ROUTES.map((r) => getResultContent(r)) });
     for (const banned of ['te ama', 'va a volver.', '%']) {
       expect(all.toLowerCase()).not.toContain(banned);
     }

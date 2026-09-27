@@ -93,6 +93,7 @@ export default function App() {
             timing={answers.timing}
             firstName={(answers.first_name ?? '').trim()}
             goal={answers.goal_now}
+            whoEnded={answers.who_ended}
             onContinue={next}
           />
         );

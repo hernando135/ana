@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from '../components/Button';
 import { ScreenTitle } from '../components/Screen';
 import { RESULT_CONTINUE_CTA, RESULT_CTA } from '../data/copy';
-import { DEEPEN, getPersonalization, getResultContent, type NormalRouteId } from '../data/results';
+import { DEEPEN, getPersonalization, getResultContent, getWhoEndedLine, type NormalRouteId } from '../data/results';
 import { useScreenFocus } from '../hooks/useScreenFocus';
-import type { GoalNow, Timing } from '../types/quiz';
+import type { GoalNow, Timing, WhoEnded } from '../types/quiz';
 
 interface Props {
   route: NormalRouteId;
   timing?: Timing;
   firstName: string;
   goal?: GoalNow;
+  whoEnded?: WhoEnded;
   onContinue: () => void;
 }
 
@@ -19,13 +20,15 @@ interface Props {
  * El CTA "¿QUÉ DEBERÍA MIRAR AHORA?" baja a los 3 puntos; cuando ya
  * están a la vista, el CTA pasa a "SEGUIR" y avanza al Club.
  */
-export function ResultScreen({ route, timing, firstName, goal, onContinue }: Props) {
+export function ResultScreen({ route, timing, firstName, goal, whoEnded, onContinue }: Props) {
   const titleRef = useScreenFocus<HTMLHeadingElement>('result');
   const deepenRef = useRef<HTMLHeadingElement>(null);
   const [deepenSeen, setDeepenSeen] = useState(false);
   const content = getResultContent(route, timing);
   const deepen = DEEPEN[route];
-  const personalization = getPersonalization(goal);
+  const personalization = [getWhoEndedLine(whoEnded), getPersonalization(goal)].filter(
+    (line): line is string => line !== null,
+  );
 
   // Si la usuaria llega a los 3 puntos haciendo scroll, el CTA ya puede avanzar.
   useEffect(() => {
@@ -68,7 +71,13 @@ export function ResultScreen({ route, timing, firstName, goal, onContinue }: Pro
           <p className="card__text">{b.text}</p>
         </aside>
       ))}
-      {personalization && <p className="personalization">{personalization}</p>}
+      {personalization.length > 0 && (
+        <div className="personalization">
+          {personalization.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
+      )}
 
       <div className="deepen">
         <h2 ref={deepenRef} tabIndex={-1} className="deepen__title">
