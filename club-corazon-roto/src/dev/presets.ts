@@ -1,0 +1,91 @@
+import type { QuizAnswers, RouteId } from '../types/quiz';
+
+type PresetAnswers = Omit<QuizAnswers, 'case_id' | 'created_at' | 'updated_at'>;
+
+const BASE: PresetAnswers = {
+  goal_now: 'possible_return',
+  who_ended: 'he_ended',
+  time_since_breakup: '1_3_months',
+  main_pain: 'will_he_return',
+  return_position: 'ambivalent',
+  safety: ['none_of_these'],
+  safety_flag: false,
+  first_name: 'Laura',
+};
+
+/** Respuestas completas que llevan a cada ruta (solo desarrollo/tests). */
+export const ROUTE_PRESETS: Record<RouteId | 'R5_EARLY', PresetAnswers> = {
+  R0: {
+    ...BASE,
+    contact_level: 'frequent',
+    contact_initiator: 'both',
+    without_user_initiating: 'he_contacts',
+    return_conversation: 'both_want_return',
+    repair_actions: 'concrete_sustained',
+    cycle_count: 'never',
+    after_reconnection: 'not_applicable',
+    safety: ['threatened'],
+    safety_flag: true,
+  },
+  R1: {
+    ...BASE,
+    contact_level: 'frequent',
+    contact_initiator: 'both',
+    without_user_initiating: 'he_contacts',
+    return_conversation: 'both_want_return',
+    repair_actions: 'concrete_sustained',
+    cycle_count: 'never',
+    after_reconnection: 'not_applicable',
+  },
+  R2: {
+    ...BASE,
+    contact_level: 'frequent',
+    contact_initiator: 'both',
+    without_user_initiating: 'he_contacts',
+    return_conversation: 'misses_no_return',
+    repair_actions: 'mostly_words',
+    cycle_count: 'never',
+    after_reconnection: 'not_applicable',
+  },
+  R3: {
+    ...BASE,
+    contact_level: 'occasional',
+    contact_initiator: 'mostly_user',
+    without_user_initiating: 'nothing',
+    return_conversation: 'doesnt_know',
+    repair_actions: 'none',
+    cycle_count: 'never',
+    after_reconnection: 'not_applicable',
+  },
+  R4: {
+    ...BASE,
+    contact_level: 'occasional',
+    contact_initiator: 'both',
+    without_user_initiating: 'eventually_appears',
+    return_conversation: 'misses_no_return',
+    repair_actions: 'none',
+    cycle_count: 'many',
+    after_reconnection: 'sex_confusion',
+  },
+  R5: {
+    ...BASE,
+    contact_level: 'none',
+    contact_initiator: 'no_contact',
+    without_user_initiating: 'not_applicable',
+    return_conversation: 'not_talking',
+    repair_actions: 'none',
+    cycle_count: 'never',
+    after_reconnection: 'not_applicable',
+  },
+  R5_EARLY: {
+    ...BASE,
+    time_since_breakup: 'less_7_days',
+    contact_level: 'none',
+    contact_initiator: 'no_contact',
+    without_user_initiating: 'not_applicable',
+    return_conversation: 'not_talking',
+    repair_actions: 'none',
+    cycle_count: 'never',
+    after_reconnection: 'not_applicable',
+  },
+};

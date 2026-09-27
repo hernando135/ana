@@ -1,0 +1,41 @@
+/* Paleta oficial — Club del Corazón Roto */
+:root {
+  --color-wine: #7e3449; /* principal, títulos importantes, CTA */
+  --color-mauve: #b65d78; /* acentos y estados secundarios */
+  --color-nude: #e8b8ae; /* tarjetas y superficies secundarias */
+  --color-cream: #f7e8df; /* fondo principal */
+  --color-plum: #342832; /* texto principal */
+
+  /* Derivados (mezclas de la paleta, sin colores nuevos) */
+  --color-wine-hover: color-mix(in srgb, var(--color-wine) 88%, var(--color-plum));
+  --color-wine-pressed: color-mix(in srgb, var(--color-wine) 75%, var(--color-plum));
+  --color-surface: color-mix(in srgb, var(--color-cream) 30%, #fff);
+  --color-nude-soft: color-mix(in srgb, var(--color-nude) 45%, var(--color-cream));
+  --color-text-muted: color-mix(in srgb, var(--color-plum) 76%, var(--color-cream));
+  --color-border: color-mix(in srgb, var(--color-nude) 80%, var(--color-plum) 8%);
+  --color-focus: var(--color-mauve);
+  --color-wine-soft: color-mix(in srgb, var(--color-wine) 14%, var(--color-cream));
+  --color-mauve-soft: color-mix(in srgb, var(--color-mauve) 30%, var(--color-cream));
+
+  --font-display: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgb(52 40 50 / 6%), 0 8px 24px -12px rgb(52 40 50 / 18%);
+  --shadow-cta: 0 10px 24px -12px rgb(126 52 73 / 60%);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --content-width: 560px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
