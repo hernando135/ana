@@ -1,0 +1,25 @@
+name: Daily Instagram content
+on:
+  schedule:
+    - cron: "0 11 * * *"   # todos los días 11:00 UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r content_agents/requirements.txt && playwright install --with-deps chromium
+      - run: python content_agents/orchestrator.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      - name: Guardar resultados
+        run: |
+          git config user.name "content-bot"; git config user.email "bot@users.noreply.github.com"
+          git add output data/history.json
+          git commit -m "Contenido diario $(date -u +%F)" || exit 0
+          git push

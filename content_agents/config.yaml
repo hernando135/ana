@@ -1,0 +1,38 @@
+# Configuración del sistema de contenido para Instagram
+model: claude-sonnet-5-5
+
+brand:
+  name: TenshiCall
+  tagline: Conectando almas
+  niche: lecturas psíquicas, claridad emocional, cierre de ciclos, amor/carrera/finanzas
+  language: es
+  voice: cálida, directa, empática, sin promesas absolutas ni miedo; práctica y fácil de recordar
+  audience: hispanohablantes 25-45 buscando claridad emocional y orientación
+  cta: "Reserva tu lectura en el link de la bio"
+  never_say:
+    - "garantizado"
+    - "cura"
+    - "predicción médica o legal"
+  colors:
+    background: "#120B2E"
+    primary: "#C9A7FF"
+    accent: "#F5D77A"
+    text: "#FFFFFF"
+  fonts: "Georgia, serif"
+
+# Cuentas de Instagram de la competencia (sin @). EDITA ESTA LISTA.
+competitors:
+  - competidor_ejemplo_1
+  - competidor_ejemplo_2
+  - competidor_ejemplo_3
+
+research:
+  posts_per_competitor: 12
+  # "apify" = scraping vía Apify (requiere APIFY_TOKEN)
+  # "manual" = lee data/manual_competitor_posts.json
+  source: apify
+
+daily_output:
+  carousels: 1
+  reels_scripts: 1
+  single_posts: 1

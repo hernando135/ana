@@ -1,0 +1,4 @@
+anthropic>=0.40
+pyyaml>=6
+requests>=2.31
+playwright>=1.45
